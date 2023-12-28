@@ -18,14 +18,28 @@ class StatelessAndStateful extends StatelessWidget{
   }
 }
 
-class StatelessAndStatefulScreen extends StatelessWidget{
+class StatelessAndStatefulScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => stateFul();
+
+}
+
+class stateFul extends State<StatelessAndStatefulScreen>{
+  var count = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Stateless And Stateful Widget '),
-      ),
-      body: Text('Hello World!!'),
-    );
+   return Column(
+     mainAxisAlignment: MainAxisAlignment.center,
+     children: [
+       Text("Count: $count", style: TextStyle(fontSize: 20),),
+       ElevatedButton(onPressed: (){
+          setState(() {
+            count ++ ;
+          });
+
+       }, child: Text('Increment Count'))
+     ],
+
+   );
   }
 }
